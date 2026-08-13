@@ -28,3 +28,5 @@ dist/
 #가상화부분 차단
 .venv/
 venv/
+hsj/
+inpusanstation-code/
