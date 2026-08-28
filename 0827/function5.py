@@ -1,15 +1,31 @@
-﻿def add(*numbers) :
-	sum = 0
-	for n in numbers:
-		sum = sum + n
-	return sum
-print(add(10, 20))
-print(add(10, 20, 30))
+﻿# ----------------------------------------------------
+# 1. *numbers : 가변 인자 (Positional Arguments)
+# 전달받는 값의 개수가 정해지지 않았을 때 사용합니다.
+# 입력된 값들은 하나의 '튜플(Tuple)' 형태로 묶여서 들어옵니다.
+# ----------------------------------------------------
+def add(*numbers):
+    sum = 0                  # 합계를 누적해서 저장할 변수를 0으로 초기화
+    for n in numbers:        # numbers 튜플에 들어있는 숫자들을 하나씩 꺼내어 반복
+        sum = sum + n        # 꺼낸 숫자를 sum에 계속 더함 (sum += n 과 동일)
+        print("n =",n)
+    return sum               # 모든 계산이 끝난 최종 합계를 함수 밖으로 반환
+
+print(add(10, 20))           # 10과 20을 전달 -> 10 + 20 = 30 출력
+print(add(10, 20, 30))       # 10, 20, 30을 전달 -> 10 + 20 + 30 = 60 출력
+
+
+# ----------------------------------------------------
+# 2. **kwargs : 키워드 가변 인자 (Keyword Arguments)
+# 'key=value' 형태의 값들을 개수 제한 없이 전달받을 때 사용합니다.
+# 입력된 값들은 하나의 '딕셔너리(Dictionary)' 형태로 묶여서 들어옵니다.
+# ----------------------------------------------------
 def myfunc(**kwargs):
-    result = ""
-    for arg,v in kwargs.items():
-        print(arg + ":" + v)
+    result = ""              # 문자열 변수 선언 (현재 코드에서는 사용되지 않음)
     
+    # kwargs.items()는 딕셔너리의 (키, 값) 쌍을 꺼내주는 메서드입니다.
+    # arg에는 Key(a, b, c)가, v에는 Value("Hi!", "Mr.", "Kim")가 들어갑니다.
+    for arg, v in kwargs.items():
+        print(arg + ":" + v)  # "키:값" 형태로 연결하여 화면에 출력
 
+# a="Hi!", b="Mr.", c="Kim" 형태로 전달되어 kwargs는 {'a': 'Hi!', 'b': 'Mr.', 'c': 'Kim'} 이 됨
 myfunc(a="Hi!", b="Mr.", c="Kim")
-

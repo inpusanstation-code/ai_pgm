@@ -2,5 +2,8 @@
 print("제거전", scores)
 scores.sort() 
 
+sorted = sorted(scores)
+print("sorted ver: ", sorted)
+
 new_scores = scores[1:-1] 
 print("제거후", new_scores)

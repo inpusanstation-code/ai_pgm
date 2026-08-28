@@ -1,15 +1,30 @@
 ﻿import time
-SIZE =50
 
-start_time = time.time()
-mylist =[]
-for i in range(SIZE):
-    mylist = mylist +[i * i]
-    
-print("수행시간=", time.time()- start_time)
+SIZE = 50
 
+# =========================================================================
+# 방식 1: + 연산자를 이용한 리스트 연결 (List Concatenation)
+# [원리] 매번 새로운 리스트를 만들어 기존 요소들을 모두 복사해옵니다.
+#        원소가 늘어날수록 이전에 넣었던 것까지 매번 새로 복사하므로 매우 비효율적입니다.
+# =========================================================================
 start_time = time.time()
-mylist =[]
+mylist = []
 for i in range(SIZE):
+    # 기존 mylist와 새로운 리스트 [i * i]를 합쳐서 '완전히 새로운' 리스트를 메모리에 생성합니다.
+    mylist = mylist + [i * i]
+
+print("수행시간 (+ 연산자) =", time.time() - start_time)
+
+
+# =========================================================================
+# 방식 2: append() 메서드를 이용한 요소 추가
+# [원리] 기존에 만들어둔 리스트의 '맨 뒤'에 새로운 값만 쏙 덧붙입니다.
+#        이전 값들을 다시 복사할 필요가 없어 데이터가 많아져도 훨씬 빠르고 효율적입니다.
+# =========================================================================
+start_time = time.time()
+mylist = []
+for i in range(SIZE):
+    # 기존 mylist 공간을 그대로 유지하면서 끝에 i * i 값만 바로 추가합니다.
     mylist.append(i * i)
-print("수행시간=", time.time()- start_time)
+
+print("수행시간 (append 메서드) =", time.time() - start_time)
